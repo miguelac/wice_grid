@@ -10,7 +10,11 @@ Gem::Specification.new do |s|
     'WiceGrid automates implementation of filters, ordering, paginations, CSV export, and so on. ' \
     'Ruby blocks provide an elegant means for this.'
 
-  s.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  # this was causing troubles deploying to aws as it doesn't have git command installed
+  # s.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  # use this instead
+  s.files = Dir["{app,config,lib,vendor}/**/*", "Rakefile", "README.md"]
+
   s.license       = 'MIT'
   s.require_paths = ['lib']
   s.date          = '2018-05-31'
